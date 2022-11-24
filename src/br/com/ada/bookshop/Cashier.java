@@ -1,37 +1,38 @@
 package br.com.ada.bookshop;
 
-import br.com.ada.bookshop.inventory.Product;
+import br.com.ada.bookshop.inventory.Stock;
+import br.com.ada.bookshop.model.Product;
+import br.com.ada.bookshop.util.BigDecimalHelper;
 
-import java.math.BigDecimal;
+import java.util.Map;
+import java.util.function.Consumer;
 
 public class Cashier {
 
 	private final Stock stock = new Stock();
 
-	private final BigDecimal balance = new BigDecimal("0.0");
+	private final BigDecimalHelper balance = new BigDecimalHelper();
 
 	public Cashier() {
 	}
 
-	public BigDecimal getBalance() {
-		return balance;
+	public Double getBalance() {
+		return balance.getValue();
 	}
 
-	public void checkoutProduct(Product product, Integer qty) {
-		add(qty * product.getPrice());
-		stock.subtractFromStock(product, qty);
+	public void checkoutCart(Cart cart) {
+		balance.add(cart.getTotal());
+		handleStock(cart, entry -> stock.subtractFromStock(entry.getKey(), entry.getValue().getQty()));
 	}
 
-	public void returnProduct(Product product, Integer qty) {
-		subtract(qty * product.getPrice());
-		stock.addToStock(product, qty);
+	public void returnCart(Cart cart) {
+		balance.subtract(cart.getTotal());
+		handleStock(cart, entry -> stock.addToStock(entry.getKey(), entry.getValue().getQty()));
 	}
 
-	private BigDecimal add(Double value) {
-		return this.balance.add(BigDecimal.valueOf(value));
-	}
-
-	private BigDecimal subtract(Double value) {
-		return this.balance.subtract(BigDecimal.valueOf(value));
+	private void handleStock(Cart cart, Consumer<Map.Entry<Product, Cart.Item>> handler) {
+		for (Map.Entry<Product, Cart.Item> entry : cart.getItems().entrySet()) {
+			handler.accept(entry);
+		}
 	}
 }

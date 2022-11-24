@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ public class Movie extends Product {
 		super();
 	}
 
-	public Movie(Long id, String name, Double price, String studio, List<String> directors, List<String> genres, List<String> producers) {
-		super("movie", id, name, price);
+	public Movie(Long id, String name, Double price, Boolean adultsOnly, String studio, List<String> directors, List<String> genres, List<String> producers) {
+		super("movie", id, name, price, adultsOnly);
 		this.studio = studio;
 		this.directors = directors;
 		this.genres = genres;

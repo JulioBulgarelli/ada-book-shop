@@ -1,6 +1,6 @@
-package br.com.ada.bookshop;
+package br.com.ada.bookshop.inventory;
 
-import br.com.ada.bookshop.inventory.Product;
+import br.com.ada.bookshop.model.Product;
 
 import java.util.HashMap;
 import java.util.Map;

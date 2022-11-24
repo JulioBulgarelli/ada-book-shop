@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 public class Game extends Product {
 
@@ -10,8 +10,8 @@ public class Game extends Product {
 		super();
 	}
 
-	public Game(Long id, String name, Double price, String distributor, String genre, String studio) {
-		super("game", id, name, price);
+	public Game(Long id, String name, Double price, Boolean adultsOnly, String distributor, String genre, String studio) {
+		super("game", id, name, price, adultsOnly);
 		this.distributor = distributor;
 		this.genre = genre;
 		this.studio = studio;

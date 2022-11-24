@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 public class Book extends Product {
 
@@ -10,8 +10,8 @@ public class Book extends Product {
 		super();
 	}
 
-	public Book(Long id, String name, Double price, String genre, String writer, String publisher) {
-		super("book", id, name, price);
+	public Book(Long id, String name, Double price, Boolean adultsOnly, String genre, String writer, String publisher) {
+		super("book", id, name, price, adultsOnly);
 		this.genre = genre;
 		this.writer = writer;
 		this.publisher = publisher;

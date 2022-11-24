@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 public class Product {
 
@@ -6,15 +6,17 @@ public class Product {
 	private Long id;
 	private String name;
 	private Double price;
+	private Boolean adultsOnly;
 
 	public Product() {
 	}
 
-	public Product(String category, Long id, String name, Double price) {
+	public Product(String category, Long id, String name, Double price, Boolean adultsOnly) {
 		this.category = category;
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.adultsOnly = adultsOnly;
 	}
 
 	public String getCategory() {
@@ -47,5 +49,13 @@ public class Product {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Boolean getAdultsOnly() {
+		return adultsOnly;
+	}
+
+	public void setAdultsOnly(Boolean adultsOnly) {
+		this.adultsOnly = adultsOnly;
 	}
 }

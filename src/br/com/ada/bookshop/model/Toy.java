@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 public class Toy extends Product {
 
@@ -8,8 +8,8 @@ public class Toy extends Product {
 		super();
 	}
 
-	public Toy(Long id, String name, Double price, String type) {
-		super("toy", id, name, price);
+	public Toy(Long id, String name, Double price, Boolean adultsOnly, String type) {
+		super("toy", id, name, price, adultsOnly);
 		this.type = type;
 	}
 

@@ -1,4 +1,4 @@
-package br.com.ada.bookshop.inventory;
+package br.com.ada.bookshop.model;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ public class Album extends Product {
 		super();
 	}
 
-	public Album(Long id, String name, Double price, List<String> artists, List<String> genres, List<String> seals) {
-		super("album", id, name, price);
+	public Album(Long id, String name, Double price, Boolean adultsOnly, List<String> artists, List<String> genres, List<String> seals) {
+		super("album", id, name, price, adultsOnly);
 		this.artists = artists;
 		this.genres = genres;
 		this.seals = seals;
